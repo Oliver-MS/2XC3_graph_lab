@@ -43,6 +43,7 @@ def BFS(G, node1, node2):
                 marked[node] = True
     return False
 
+#returns a path from node1 to node2
 def BFS1(G, node1, node2):
     
 
