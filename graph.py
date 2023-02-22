@@ -30,6 +30,7 @@ class Graph:
 def BFS(G, node1, node2):
     Q = deque([node1])
     marked = {node1 : True}
+    #initialize nodes to not marked
     for node in G.adj:
         if node != node1:
             marked[node] = False
@@ -45,7 +46,24 @@ def BFS(G, node1, node2):
 
 #returns a path from node1 to node2
 def BFS1(G, node1, node2):
-    
+    Q = deque([node1])
+    marked = {node1 : True}
+    my_path = [node1]
+    #initialize nodes to not marked
+    for node in G.adj:
+        if node != node1:
+            marked[node] = False
+    while len(Q) != 0:
+        current_node = Q.popleft()
+        for node in G.adj[current_node]:
+            if node == node2:
+                my_path.append(node)
+                return my_path
+            if not marked[node]:
+                Q.append(node)
+                marked[node] = True
+            if 
+    return False
 
 
 #Depth First Search
