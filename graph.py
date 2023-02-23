@@ -48,7 +48,8 @@ def BFS(G, node1, node2):
 def BFS1(G, node1, node2):
     Q = deque([node1])
     marked = {node1 : True}
-    my_path = [node1]
+    #track parent of each node searched
+    parent = {node1 : None}
     #initialize nodes to not marked
     for node in G.adj:
         if node != node1:
@@ -57,13 +58,19 @@ def BFS1(G, node1, node2):
         current_node = Q.popleft()
         for node in G.adj[current_node]:
             if node == node2:
-                my_path.append(node)
-                return my_path
+                #reconstruct path from parents
+                path = [node]
+                while current_node != node1:
+                    path = [current_node] + path
+                    current_node = parent[current_node]
+                path = [node1] + path
+                return path
             if not marked[node]:
                 Q.append(node)
                 marked[node] = True
-            if 
-    return False
+                parent[node] = current_node
+    #return None if no path is found
+    return None
 
 
 #Depth First Search
@@ -81,6 +88,30 @@ def DFS(G, node1, node2):
                     return True
                 S.append(node)
     return False
+
+#returns a path from node1 to node2
+def DFS1(G, node1, node2):
+    S = [node1]
+    marked = {}
+    parent = {node1 : None}
+    for node in G.adj:
+        marked[node] = False
+    while len(S) != 0:
+        current_node = S.pop()
+        #print(f"queue: {S}\nparent: {parent}\nmarked: {marked}\n")
+        if not marked[current_node]:
+            marked[current_node] = True
+            for node in G.adj[current_node]:
+                if not marked[node]:
+                    parent[node] = current_node
+                if node == node2:
+                    path = [node]
+                    while node != node1:
+                        node = parent[node]
+                        path = [node] + path
+                    return path
+                S.append(node)
+    return None
 
 #Use the methods below to determine minimum vertex covers
 
