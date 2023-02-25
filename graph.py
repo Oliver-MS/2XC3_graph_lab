@@ -45,7 +45,7 @@ def BFS(G, node1, node2):
     return False
 
 #returns a path from node1 to node2
-def BFS1(G, node1, node2):
+def BFS2(G, node1, node2):
     Q = deque([node1])
     marked = {node1 : True}
     #track parent of each node searched
@@ -69,9 +69,26 @@ def BFS1(G, node1, node2):
                 Q.append(node)
                 marked[node] = True
                 parent[node] = current_node
-    #return None if no path is found
-    return None
+    return []
 
+#return whole predecessor dictionary
+def BFS3(G, node1):
+    Q = deque([node1])
+    marked = {node1 : True}
+    #track parent of each node searched
+    parent = {}
+    #initialize nodes to not marked
+    for node in G.adj:
+        if node != node1:
+            marked[node] = False
+    while len(Q) != 0:
+        current_node = Q.popleft()
+        for node in G.adj[current_node]:
+            if not marked[node]:
+                Q.append(node)
+                marked[node] = True
+                parent[node] = current_node
+    return parent
 
 #Depth First Search
 def DFS(G, node1, node2):
@@ -90,7 +107,7 @@ def DFS(G, node1, node2):
     return False
 
 #returns a path from node1 to node2
-def DFS1(G, node1, node2):
+def DFS2(G, node1, node2):
     S = [node1]
     marked = {}
     parent = {node1 : None}
@@ -111,7 +128,24 @@ def DFS1(G, node1, node2):
                         path = [node] + path
                     return path
                 S.append(node)
-    return None
+    return []
+
+#return whole predecessor dictionary
+def DFS3(G, node1):
+    S = [node1]
+    marked = {}
+    parent = {}
+    for node in G.adj:
+        marked[node] = False
+    while len(S) != 0:
+        current_node = S.pop()
+        if not marked[current_node]:
+            marked[current_node] = True
+            for node in G.adj[current_node]:
+                if not marked[node]:
+                    parent[node] = current_node
+                S.append(node)
+    return parent
 
 #Use the methods below to determine minimum vertex covers
 
