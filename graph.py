@@ -147,6 +147,16 @@ def DFS3(G, node1):
                 S.append(node)
     return parent
 
+def has_cycle(G):
+    pass
+
+#returns true if a connection exists in graph G
+def is_connected(G):
+    for node in G.adj:
+        if DFS3(G, node):
+            return True
+    return False
+
 #Use the methods below to determine minimum vertex covers
 
 def add_to_each(sets, element):
