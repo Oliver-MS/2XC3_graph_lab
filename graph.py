@@ -1,4 +1,5 @@
 from collections import deque
+import random
 
 #Undirected graph using an adjacency list
 class Graph:
@@ -22,9 +23,21 @@ class Graph:
             self.adj[node1].append(node2)
             self.adj[node2].append(node1)
 
-    def number_of_nodes():
-        return len()
+    def number_of_nodes(self):
+        return len(self.adj)
 
+    def remove_node(self, node):
+        for node1 in self.adj[node]:
+            self.adj[node1].remove(node)
+        del self.adj[node]
+
+def create_random_graph(i, j):
+    G = Graph(i)
+    for node1 in range(i):
+        for node2 in range(j):
+            if random.random() < 0.5:
+                G.add_edge(node1, node2)
+    return G
 
 #Breadth First Search
 def BFS(G, node1, node2):
@@ -184,7 +197,7 @@ def is_vertex_cover(G, C):
     return True
 
 def MVC(G):
-    nodes = [i for i in range(G.get_size())]
+    nodes = [i for i in range(G.number_of_nodes())]
     subsets = power_set(nodes)
     min_cover = nodes
     for subset in subsets:
@@ -192,5 +205,24 @@ def MVC(G):
             if len(subset) < len(min_cover):
                 min_cover = subset
     return min_cover
+
+def approx1(G):
+    C = []
+    G_temp=G
+    while not is_vertex_cover(G_temp, C):
+        max_degree = 0
+        max_node = None
+        for node in G_temp.adj:
+            if len(G_temp.adj[node]) > max_degree:
+                max_degree = len(G_temp.adj[node])
+                max_node = node
+        C.append(max_node)
+        G_temp.remove_node(max_node)
+
+    return C
+
+graph_test = create_random_graph(8, 5)
+print(MVC(graph_test))
+print(approx1(graph_test))
 
 
