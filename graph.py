@@ -148,7 +148,13 @@ def DFS3(G, node1):
     return parent
 
 def has_cycle(G):
-    pass
+    for node in G.adj:
+        parent1 = BFS3(G, node)
+        parent2 = DFS3(G, node)
+        for i in parent1:
+            if parent1[i] != parent2[i]:
+                return True
+    return False
 
 #returns true if a connection exists in graph G
 def is_connected(G):
