@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from graph import is_connected, create_random_graph, has_cycle
+from graph import is_connected, create_random_graph
 
 experiments = 500
 nodes = 100
@@ -20,8 +20,9 @@ for j in range(1, edges):
 
 
 plt.plot(edge, chance_of_connection, label = "Chance of Connection")
-plt.xlabel("Number of edges")
-plt.ylabel("Chance of connection in percentage")
+plt.xlabel("number of edges")
+plt.ylabel("percent chance to be connected")
+plt.title(f"Finding the Chances for Randomly Generated Graphs\nWith {nodes} Nodes to be Connected")
 plt.legend()
 plt.show()
 print("done!")
