@@ -280,11 +280,3 @@ def approx3(G):
         G_temp.remove_incident_edges(v)
     return C
 
-    
-graph_test = create_random_graph(8, 5)
-print(MVC(graph_test))
-print(approx1(graph_test))
-print(approx2(graph_test))
-print(approx3(graph_test))
-
-
