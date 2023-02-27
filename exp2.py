@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 
 from graph import is_connected, create_random_graph, has_cycle
 
-experiments = 1000
-nodes = 50
-edges = 50
+experiments = 500
+nodes = 100
+edges = 200
 
 chance_of_connection = []
 edge = []
@@ -24,5 +24,4 @@ plt.xlabel("Number of edges")
 plt.ylabel("Chance of connection in percentage")
 plt.legend()
 plt.show()
-
-
+print("done!")
