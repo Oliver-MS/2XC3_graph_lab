@@ -52,11 +52,11 @@ def create_random_graph(i, j):
     edges = []
     for _ in range(j):
         while True:
-            node1 = random.randint(0, i - 1)
-            node2 = random.randint(0, i - 1)
+            node1 = random.randint(0, i-1)
+            node2 = random.randint(0, i-1)
             #ensure no duplicates
             while node2 == node1:
-                node2 = random.randint(0, i - 1)
+                node2 = random.randint(0, i-1)
             if {node1, node2} in edges:
                 pass
             else:
