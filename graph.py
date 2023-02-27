@@ -46,10 +46,10 @@ class Graph:
             self.adj[node1].remove(node)
         self.adj[node] = []
 
+#i = #nodes, j = #edges
 def create_random_graph(i, j):
     G = Graph(i)
     edges = []
-    #j = num edges
     for _ in range(j):
         while True:
             node1 = random.randint(0, i - 1)
