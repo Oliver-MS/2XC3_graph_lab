@@ -181,12 +181,17 @@ def has_cycle(G):
                 return True
     return False
 
-#returns true if a connection exists in graph G
+#returns true if there is a path from every node a to every other node b
 def is_connected(G):
-    for node in G.adj:
-        if DFS3(G, node):
-            return True
-    return False
+    for node1 in G.adj:
+        for node2 in G.adj:
+            if node1 == node2:
+                pass
+            else:
+                #return false if there is no path from node1 to node2
+                if not DFS(G, node1, node2):
+                    return False
+    return True
 
 #Use the methods below to determine minimum vertex covers
 
