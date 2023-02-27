@@ -31,14 +31,33 @@ class Graph:
             self.adj[node1].remove(node)
         del self.adj[node]
 
+    def copy(self):
+        G = Graph(len(self.adj))
+        for node1 in self.adj:
+            for node2 in self.adj[node1]:
+                G.add_edge(node1, node2)
+        return G
+
+    #function that removes all edges incident to node
+    def remove_incident_edges(self, node):
+        if self.adj[node] == []:
+            return
+        for node1 in self.adj[node]:
+            self.adj[node1].remove(node)
+        self.adj[node] = []
+
 def create_random_graph(i, j):
     G = Graph(i)
     for node1 in range(i):
         for node2 in range(j):
-            if random.random() < 0.5:
+            if node1 != node2 and random.random() < 0.5:
                 G.add_edge(node1, node2)
     return G
 
+
+#function that selects random node from graph
+def random_node(G):
+    return random.choice(list(G.adj.keys()))
 #Breadth First Search
 def BFS(G, node1, node2):
     Q = deque([node1])
@@ -208,7 +227,8 @@ def MVC(G):
 
 def approx1(G):
     C = []
-    G_temp=G
+    #create copy of G to remove nodes from
+    G_temp = G.copy()
     while not is_vertex_cover(G_temp, C):
         max_degree = 0
         max_node = None
@@ -217,12 +237,42 @@ def approx1(G):
                 max_degree = len(G_temp.adj[node])
                 max_node = node
         C.append(max_node)
-        G_temp.remove_node(max_node)
+        G_temp.remove_incident_edges(max_node)
 
     return C
 
+def approx2(G):
+    C = []
+    while not is_vertex_cover(G, C):
+        rand_vertex = random.choice(list(G.adj.keys()))
+        while rand_vertex in C:
+            rand_vertex = random.choice(list(G.adj.keys()))
+        C.append(rand_vertex)
+    return C
+
+
+def approx3(G):
+    C = []
+    G_temp = G.copy()
+    while not is_vertex_cover(G_temp, C):
+        while True:
+            u = random.choice(list(G_temp.adj.keys()))
+            while len(G_temp.adj[u]) == 0:
+                u = random.choice(list(G_temp.adj.keys()))
+            v = random.choice(G_temp.adj[u])
+            if not u in C and not v in C:
+                break
+        C.append(u)
+        C.append(v)
+        G_temp.remove_incident_edges(u)
+        G_temp.remove_incident_edges(v)
+    return C
+
+    
 graph_test = create_random_graph(8, 5)
 print(MVC(graph_test))
 print(approx1(graph_test))
+print(approx2(graph_test))
+print(approx3(graph_test))
 
 
