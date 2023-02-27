@@ -33,10 +33,21 @@ class Graph:
 
 def create_random_graph(i, j):
     G = Graph(i)
-    for node1 in range(i):
-        for node2 in range(j):
-            if random.random() < 0.5:
+    edges = []
+    #j = num edges
+    for _ in range(j):
+        while True:
+            node1 = random.randint(0, i)
+            node2 = random.randint(0, i)
+            #ensure no duplicates
+            while node2 == node1:
+                node2 = random.randint(0, i)
+            if {node1, node2} in edges:
+                pass
+            else:
                 G.add_edge(node1, node2)
+                edges.append({node1, node2})
+                break
     return G
 
 #Breadth First Search
@@ -160,6 +171,7 @@ def DFS3(G, node1):
                 S.append(node)
     return parent
 
+#returns true if a cycle exists in graph G
 def has_cycle(G):
     for node in G.adj:
         parent1 = BFS3(G, node)
