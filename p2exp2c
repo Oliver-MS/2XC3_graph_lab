@@ -16,10 +16,10 @@ sumsA2 = []
 sumsA3 = []
 numEdges = []
 
-for j in range(1, nodes):
+for j in range(2, nodes):
 
     for _ in range(experiments):
-        G = create_random_graph(j, 1)
+        G = create_random_graph(j, 5)
 
         mvcAvg += (len(MVC(G)))
         a1Avg += (len(approx1(G)))
