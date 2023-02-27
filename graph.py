@@ -69,6 +69,7 @@ def create_random_graph(i, j):
 #function that selects random node from graph
 def random_node(G):
     return random.choice(list(G.adj.keys()))
+
 #Breadth First Search
 def BFS(G, node1, node2):
     Q = deque([node1])
