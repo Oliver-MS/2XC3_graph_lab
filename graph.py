@@ -37,7 +37,12 @@ class Graph:
             for node2 in self.adj[node1]:
                 G.add_edge(node1, node2)
         return G
-
+    #function that returns number of edges
+    def number_of_edges(self):
+        edges = 0
+        for node in self.adj:
+            edges += len(self.adj[node])
+        return edges//2
     #function that removes all edges incident to node
     def remove_incident_edges(self, node):
         if self.adj[node] == []:
