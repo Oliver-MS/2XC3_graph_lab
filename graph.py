@@ -238,6 +238,13 @@ def is_vertex_cover(G, C):
                 return False
     return True
 
+def is_ind_set(G, C):
+    for start in G.adj:
+        for end in G.adj[start]:
+            if start in C and end in C:
+                return False
+    return True
+
 def MVC(G):
     nodes = [i for i in range(G.number_of_nodes())]
     subsets = power_set(nodes)
@@ -253,7 +260,7 @@ def MIS(G):
     subsets = power_set(nodes)
     max_ind_set = []
     for subset in subsets:
-        if is_vertex_cover(G, subset):
+        if is_ind_set(G, subset):
             if len(subset) > len(max_ind_set):
                 max_ind_set = subset
     return max_ind_set
