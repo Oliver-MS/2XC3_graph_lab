@@ -9,15 +9,7 @@ node_start = 5
 nodes = 20
 edges = 10
 
-mvcAvg = 0
-a1Avg = 0
-a2Avg = 0
-a3Avg = 0
-sumsMVC = []
-sumsA1 = []
-sumsA2 = []
-sumsA3 = []
-numEdges = []
+
 mvcCovers=[]
 a1Covers=[]
 def generate_all_graphs(n):
@@ -43,7 +35,11 @@ for graph in G:
     mvcCovers.append(MVC(graph))
     a1Covers.append(approx1(graph))
 countDiff=0
+diffMag=[]
 for i in range(0, len(mvcCovers)):
     if len(mvcCovers[i]) < len(a1Covers[i]):
         countDiff += 1
-print(countDiff)
+        diffMag.append(abs(len(a1Covers[i])-len(mvcCovers[i])))
+print("Total number of graphs: " + str(len(G)+1))
+print("Max difference between MVC and approx1 vertex covers: " + str(max(diffMag)))
+print("Number of differences between MVC and approx1 vertex covers: " + str(countDiff))
