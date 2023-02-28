@@ -19,6 +19,6 @@ for i in range(min_edges, max_edges + 1):
     
 plt.plot(edges, cycle_perc)
 plt.xlabel("number of edges in graph")
-plt.ylabel("percent chance to contain a cycle")
-plt.title(f"Finding the Chances for Randomly Generated Graphs\nWith {max_nodes} Nodes to Contain a Cycle")
+plt.ylabel("chance to contain a cycle (%)")
+plt.title("Number of Edges vs. Cycle Probability")
 plt.show()
