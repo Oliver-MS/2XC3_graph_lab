@@ -218,7 +218,7 @@ def is_connected(G):
                     return False
     return True
 
-#Use the methods below to determine minimum vertex covers
+#Use the methods below to determine minimum vertex covers and independent sets
 
 def add_to_each(sets, element):
     copy = sets.copy()
