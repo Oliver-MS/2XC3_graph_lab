@@ -30,11 +30,11 @@ finalA2 = sum(sumsA2)
 finalA3 = sum(sumsA3)
 #create a bar graph
 plt.bar(0, height=finalMVC, label = "MVC")
-plt.bar(1, height=finalA1, label = "Approximation 1")
-plt.bar(2, height=finalA2, label = "Approximation 2")
-plt.bar(3, height=finalA3, label = "Approximation 3")
+plt.bar(1, height=finalA1, label = "approx1")
+plt.bar(2, height=finalA2, label = "approx2")
+plt.bar(3, height=finalA3, label = "approx3")
 
-plt.ylabel = "MVC"
-plt.xlabel = "Approximations"
+plt.xlabel("Minimal Vertex Cover Algorithms")
+plt.ylabel("Number of Nodes in the Cover")
 plt.legend()
 plt.show()

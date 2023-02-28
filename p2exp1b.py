@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 
 from graph import MVC, approx1, approx2, approx3, create_random_graph
 
-experiments = 100
-nodes = 8
-edges = 30
+experiments = 10
+nodes = 20
+edges = (nodes*(nodes-1))//2
 
 mvcAvg = 0
 a1Avg = 0
@@ -33,12 +33,12 @@ for j in range(1, edges, 5):
     sumsA2.append(a2Avg/experiments)
     sumsA3.append(a3Avg/experiments)
 
-plt.plot(numEdges, sumsMVC, label="mvc")
+plt.plot(numEdges, sumsMVC, label="MVC")
 plt.plot(numEdges, sumsA1, label="approx1")
 plt.plot(numEdges, sumsA2, label="approx2")
 plt.plot(numEdges, sumsA3, label="approx3")
-
-plt.ylabel = "MVC"
-plt.xlabel = "Approximations"
+plt.title("Number of Edges vs. Number of Nodes in Vertex Covers")
+plt.ylabel("Number of Nodes in Vertex Covers")
+plt.xlabel("Number of Edges")
 plt.legend()
 plt.show()
