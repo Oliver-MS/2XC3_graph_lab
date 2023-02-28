@@ -44,6 +44,6 @@ for graph in G:
     a1Covers.append(approx1(graph))
 countDiff=0
 for i in range(0, len(mvcCovers)):
-    if len(mvcCovers[i]) > len(a1Covers[i]) or len(mvcCovers[i]) < len(a1Covers[i]):
+    if len(mvcCovers[i]) < len(a1Covers[i]):
         countDiff += 1
 print(countDiff)
