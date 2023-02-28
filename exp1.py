@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-from graph import Graph, create_random_graph, has_cycle
+
+from graph import create_random_graph, has_cycle
 
 experiments = 500
 max_nodes = 100

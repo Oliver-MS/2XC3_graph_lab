@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from graph import is_connected, create_random_graph
+from graph import create_random_graph, is_connected
 
 experiments = 500
 nodes = 100

@@ -1,8 +1,6 @@
-import matplotlib.pyplot as plt
-from numpy import sort
-
-from graph import MVC, approx1, approx2, approx3, create_random_graph, Graph
 import itertools
+
+from graph import MVC, Graph, approx1
 
 experiments = 1
 node_start = 5  
