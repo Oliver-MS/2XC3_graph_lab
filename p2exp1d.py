@@ -40,6 +40,7 @@ for i in range(0, len(mvcCovers)):
     if len(mvcCovers[i]) < len(a1Covers[i]):
         countDiff += 1
         diffMag.append(abs(len(a1Covers[i])-len(mvcCovers[i])))
+print("Graph size: 5")
 print("Total number of graphs: " + str(len(G)+1))
 print("Max difference between MVC and approx1 vertex covers: " + str(max(diffMag)))
 print("Number of differences between MVC and approx1 vertex covers: " + str(countDiff))

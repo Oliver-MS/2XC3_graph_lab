@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 
 from graph import MVC, approx1, approx2, approx3, create_random_graph
 
-experiments = 10
-nodes = 20
+experiments = 100
+nodes = 15
 edges = (nodes*(nodes-1))//2
 
 mvcAvg = 0

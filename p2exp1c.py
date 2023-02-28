@@ -32,12 +32,12 @@ for j in range(node_start, nodes):
     sumsA2.append(a2Avg/experiments)
     sumsA3.append(a3Avg/experiments)
 
-plt.plot(numEdges, sumsMVC, label="mvc")
+plt.plot(numEdges, sumsMVC, label="MVC")
 plt.plot(numEdges, sumsA1, label="approx1")
 plt.plot(numEdges, sumsA2, label="approx2")
 plt.plot(numEdges, sumsA3, label="approx3")
-
-plt.ylabel = "MVC"
-plt.xlabel = "Approximations"
+plt.title("Number of Nodes vs. Number of Nodes in Vertex Covers")
+plt.ylabel("Number of Nodes in Vertex Covers")
+plt.xlabel("Number of Nodes in Graph")
 plt.legend()
 plt.show()
