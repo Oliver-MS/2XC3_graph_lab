@@ -248,6 +248,16 @@ def MVC(G):
                 min_cover = subset
     return min_cover
 
+def MIS(G):
+    nodes = [i for i in range(G.number_of_nodes())]
+    subsets = power_set(nodes)
+    max_ind_set = []
+    for subset in subsets:
+        if is_vertex_cover(G, subset):
+            if len(subset) > len(max_ind_set):
+                max_ind_set = subset
+    return max_ind_set
+
 def approx1(G):
     C = []
     #create copy of G to remove nodes from
